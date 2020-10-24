@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hrms.dao.InfoDao">
+    <resultMap id="info" type="info">
+        <id property="loginId" column="login_id"/>
+        <result property="loginName" column="login_name"/>
+        <result property="loginPassword" column="login_password"/>
+    </resultMap>
+
+    <select id="findByNameAndPassword" resultMap="info" parameterType="String">
+        select  * from tbl_login where login_name=#{arg0} and login_password=#{arg1};
+    </select>
+</mapper>

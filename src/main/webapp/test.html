@@ -1,0 +1,27 @@
+<html>
+<head>
+    <script>
+        window.onload = function () {
+            var opts = document.getElementById("select");
+            alert(opts);
+            var value = 2//这个值就是你获取的值;
+            if (value != "") {
+                for (var i = 0; i < opts.options.length; i++) {
+                    if (value == opts.options[i].value) {
+                        opts.options[i].selected = 'selected';
+                        alert(opts.options[i].value);
+                        break;
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<select id="select">
+    <option value="1">1231231</option>
+    <option value="2">12312312</option>
+    <option value="3">123123123</option>
+</select>
+</body>
+</html>
