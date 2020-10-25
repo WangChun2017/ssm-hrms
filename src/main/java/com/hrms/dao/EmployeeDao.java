@@ -63,5 +63,11 @@ public interface EmployeeDao {
      */
 
     public Integer employeeAdd(@Param("empName") String empName, @Param("empEmail") String empEmail, @Param("gender") String gender, @Param("departmentId") Integer departmentId);
+
+    /**
+     * 根据姓名的模糊查询
+     */
+
+    public List<Employee> findByNameBlu(@Param("empName") String empName);
 }
 

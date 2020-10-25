@@ -19,6 +19,31 @@
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $("#search_sure").click(function () {
+
+                var empName = $("#search").val();
+                $.ajax({
+                    url: "${pageContext.request.contextPath}/employee/employeeSearch?empName=" + empName,
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(empName),
+                    type: "POST",
+                    success: function (data) {
+
+                        if (data == 100) {
+                            alert(data)
+                            window.location.href = "${pageContext.request.contextPath}/employee/findAllList";
+                        }
+                    }
+
+                })
+
+            })
+        })
+
+    </script>
 </head>
 <body>
 <div class="hrms_brand_nav">
@@ -49,11 +74,11 @@
                     <li><a href="#">出勤记录</a></li>
                 </ul>
 
-                <form class="navbar-form navbar-left">
+                <form class="navbar-form navbar-left" id="" onsubmit="return false" action="##" method="post">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="站内搜索">
+                        <input type="text" class="form-control" id="search" value="" placeholder="站内搜索">
                     </div>
-                    <button type="submit" class="btn btn-default">搜索</button>
+                    <button type="button" class="btn btn-default" id="search_sure">搜索</button>
                 </form>
 
                 <ul class="nav navbar-nav navbar-right">

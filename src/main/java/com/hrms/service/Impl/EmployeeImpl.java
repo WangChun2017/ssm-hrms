@@ -151,4 +151,10 @@ public class EmployeeImpl implements EmployeeService {
 
         return employeeDao.employeeAdd(empName, empEmail, gender, departmentId);
     }
+
+    @Override
+    public List<Employee> findByNameBlu(String empName) {
+
+        return employeeDao.findByNameBlu(empName);
+    }
 }

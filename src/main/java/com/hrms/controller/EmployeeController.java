@@ -127,4 +127,21 @@ public class EmployeeController {
         }
 
     }
+
+
+    @RequestMapping("/employeeSearch")
+    @ResponseBody
+    public String employeeSearch(@RequestParam(value = "empName", required = false) String empName, HttpServletRequest request, Model model) {
+        System.out.println("执行了employeeSearch");
+        System.out.println(empName);
+        List<Employee> lists = employeeService.findByNameBlu(empName);
+        if (lists.size() > 0) {
+        }
+        model.addAttribute("list",lists);
+
+        for (Employee list : lists) {
+            System.out.println(list);
+        }
+        return "main";
+    }
 }

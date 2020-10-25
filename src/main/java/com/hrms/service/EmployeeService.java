@@ -53,4 +53,10 @@ public interface EmployeeService {
      */
 
     public Integer employeeAdd(String empName, String empEmail, String gender, Integer departmentId);
+
+    /**
+     * 根据姓名的模糊查询
+     */
+
+    public List<Employee> findByNameBlu(String empName);
 }
