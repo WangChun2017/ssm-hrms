@@ -24,14 +24,29 @@ public class PageBean<T> {
      * 每页显示的数据
      */
     private List<T> list;
-
+    /**
+     * 模糊查询条件
+     */
+    private String condition;
 
     /**
      * get and set 方法
+     *
      * @return
      */
+
+
     public Integer getTotalPages() {
         return totalPages;
+    }
+
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
     }
 
     public void setTotalPages(Integer totalPages) {

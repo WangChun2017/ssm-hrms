@@ -56,7 +56,7 @@ public class EmployeeImpl implements EmployeeService {
      * @return
      */
     @Override
-    public PageBean<Employee> findByPage(int currentPage) {
+    public PageBean<Employee> findByPage(int currentPage,String condition) {
         HashMap<String, Object> map = new HashMap<>();
         PageBean<Employee> pageBean = new PageBean<>();
 
@@ -64,6 +64,12 @@ public class EmployeeImpl implements EmployeeService {
          * 设置当前页
          */
         pageBean.setCurrPage(currentPage);
+        /**
+         * 设置模糊查询条件
+         */
+        pageBean.setCondition(condition);
+        System.out.println("service层"+condition);
+
         /**
          * 设置每页显示的记录数
          */
@@ -91,6 +97,7 @@ public class EmployeeImpl implements EmployeeService {
          */
         map.put("start", (currentPage - 1) * 5);
         map.put("end", pageBean.getPageSize());
+        map.put("condition",condition);
         List<Employee> list = employeeDao.findByPage(map);
         pageBean.setList(list);
         return pageBean;

@@ -105,7 +105,7 @@
             </tr>
         </table>
         <br>
-        <input value="登录" style="color:#BC8F8F" id="login">
+        <input type="button" value="登录" style="color:#BC8F8F" id="login">
 
     </div>
 </center>

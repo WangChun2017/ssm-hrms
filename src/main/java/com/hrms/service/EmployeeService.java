@@ -29,7 +29,7 @@ public interface EmployeeService {
      * @param currentPage
      * @return
      */
-    public PageBean<Employee> findByPage(int currentPage);
+    public PageBean<Employee> findByPage(int currentPage, String condition);
 
     /**
      * 根据id查询信息

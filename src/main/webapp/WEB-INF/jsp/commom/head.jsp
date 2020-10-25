@@ -32,9 +32,9 @@
                     type: "POST",
                     success: function (data) {
 
-                        if (data == 100) {
+                        if (data==100) {
                             alert(data)
-                            window.location.href = "${pageContext.request.contextPath}/employee/findAllList";
+                            window.location.href = "${pageContext.request.contextPath}/employee/findAllList?condition=" + empName;
                         }
                     }
 

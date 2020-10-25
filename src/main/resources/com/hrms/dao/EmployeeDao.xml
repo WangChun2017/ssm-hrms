@@ -42,10 +42,21 @@
 
     <!--  分页查找  -->
     <select id="findByPage" parameterType="map" resultMap="employee">
-        select e.*,d.dept_name from tbl_emp as e,tbl_dept as d where e.department_id = d.dept_id order by emp_id
-        <if test="start != null  and end != null">
-            limit #{start},#{end}
+        select e.*,d.dept_name from tbl_emp as e,tbl_dept as d where e.department_id = d.dept_id
+        <if test="condition != null">
+            and emp_name LIKE "%"#{condition}"%"
         </if>
+        <if test="start != null  and end != null">
+              order by emp_id limit #{start},#{end}
+        </if>
+
+        <!--        select e.*,d.dept_name from tbl_emp as e,tbl_dept as d where e.department_id = d.dept_id order by emp_id-->
+        <!--        <if test="condition!=null">-->
+
+        <!--        </if>-->
+        <!--        <if test="start != null  and end != null">-->
+        <!--            limit #{start},#{end}-->
+        <!--        </if>-->
 
 
     </select>
@@ -71,7 +82,7 @@
     </insert>
 
     <!--  根据姓名的模糊查询  -->
-    <select id="findByNameBlu" resultMap="employee" >
+    <select id="findByNameBlu" resultMap="employee">
             select * from tbl_emp  where emp_name like "%"#{empName}"%"
     </select>
 

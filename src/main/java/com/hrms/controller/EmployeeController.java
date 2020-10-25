@@ -49,12 +49,13 @@ public class EmployeeController {
      * @return
      */
     @RequestMapping("/findAllList")
-    public String finaAllList(HttpServletRequest request, Model model, @RequestParam(value = "currentPage", defaultValue = "1", required = false) Integer currentPage) {
+    public String finaAllList(HttpServletRequest request, Model model, @RequestParam(value = "currentPage", defaultValue = "1", required = false) Integer currentPage, @RequestParam(value = "condition", required = false, defaultValue = "") String condition) {
         List<Employee> lists = employeeService.findAllList();
         HttpSession session = request.getSession();
-        PageBean<Employee> byPage = employeeService.findByPage(currentPage);
+        PageBean<Employee> byPage = employeeService.findByPage(currentPage,condition);
 //        System.out.println(byPage.getList().size());
-//        System.out.println(byPage.getList().toString());
+        System.out.println(byPage.getList().toString());
+        System.out.println(condition);
         model.addAttribute("psgMsg", byPage);
         session.setAttribute("lists", lists);
         return "employeePage";
@@ -79,12 +80,12 @@ public class EmployeeController {
      * 完成修改
      */
     @RequestMapping("/finialUpdate")
-    public String finialUpdate(@RequestParam("empName") String empName, @RequestParam("empEmail") String empEmail, @RequestParam("gender") String gender, @RequestParam("empDepartmentId") Integer empDepartmentId, @RequestParam("empId") Integer empId,
-                               HttpServletRequest request, Model model, @RequestParam(value = "currentPage", defaultValue = "1", required = false) Integer currentPage) {
+    public String finialUpdate(@RequestParam("empName") String empName, @RequestParam("empEmail") String empEmail, @RequestParam("gender") String gender, @RequestParam("empDepartmentId") Integer empDepartmentId, @RequestParam(value = "empId") Integer empId,
+                               HttpServletRequest request, Model model, @RequestParam(value = "currentPage", defaultValue = "1", required = false) Integer currentPage, @RequestParam(value = "condition", defaultValue = "", required = false) String condition) {
 
         employeeService.updateEmployee(empName, empEmail, gender, empDepartmentId, empId);
 
-        return finaAllList(request, model, currentPage);
+        return finaAllList(request, model, currentPage, condition);
 
     }
 
@@ -131,17 +132,10 @@ public class EmployeeController {
 
     @RequestMapping("/employeeSearch")
     @ResponseBody
-    public String employeeSearch(@RequestParam(value = "empName", required = false) String empName, HttpServletRequest request, Model model) {
+    public Integer employeeSearch(@RequestParam(value = "empName", required = false) String empName, HttpServletRequest request, Model model) {
         System.out.println("执行了employeeSearch");
         System.out.println(empName);
-        List<Employee> lists = employeeService.findByNameBlu(empName);
-        if (lists.size() > 0) {
-        }
-        model.addAttribute("list",lists);
 
-        for (Employee list : lists) {
-            System.out.println(list);
-        }
-        return "main";
+        return 100;
     }
 }
