@@ -39,41 +39,6 @@ public class InfoController {
     public Integer loginInfo(@RequestBody CheckCode checkCode, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-//        ModelAndView mv = new ModelAndView();
-//        HttpSession session = request.getSession();
-//        String loginCode = (String) session.getAttribute("loginCode");
-//        session.removeAttribute("loginCode");
-        //验证码为空
-//        if ("".equals(checkCode.getCheckCode())) {
-////            System.out.println(checkCode);
-////            model.addAttribute("login_name_password_code_error", "验证码不能为空");
-//            request.setAttribute("login_name_password_code_error", "验证码不能为空");
-//            request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
-//            //            return "login";
-//        }
-
-        //验证码不相等
-//        if (!checkCode.getCheckCode().equalsIgnoreCase(loginCode)) {
-//            request.setAttribute("login_name_password_code_error", "验证码错误");
-//            request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
-//        }
-        //用户名或者密码不能为空
-//        if ("".equals(checkCode.getLoginName()) || "".equals(checkCode.getLoginPassword())) {
-//
-//            request.setAttribute("login_name_password_code_error", "用户名或这密码为空");
-//            request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
-
-//            model.addAttribute("login_name_password_code_error", "用户名或密码不能为空");
-//            return "login";
-
-//        }
-        //密码或者用户名不正确
-//        List<Info> login_info = infoService.findByNameAndPassword(checkCode.getLoginName(), checkCode.getLoginPassword());
-//        if (login_info.size() != 1) {
-//            request.setAttribute("login_name_password_code_error", "密码或用户名错误");
-//            request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
-//
-//        }
 
         HttpSession session = request.getSession();
         String loginCode = (String) session.getAttribute("loginCode");
@@ -84,7 +49,7 @@ public class InfoController {
             return 300;
         }
         List<Info> login_info = infoService.findByNameAndPassword(checkCode.getLoginName(), checkCode.getLoginPassword());
-
+        session.setAttribute("username",checkCode.getLoginName());
         if (login_info.size() != 1) {
             return 100;
         } else {

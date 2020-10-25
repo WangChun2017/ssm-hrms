@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -31,15 +31,11 @@
                     data: JSON.stringify(empName),
                     type: "POST",
                     success: function (data) {
-
-                        if (data==100) {
-                            alert(data)
+                        if (data == 100) {
                             window.location.href = "${pageContext.request.contextPath}/employee/findAllList?condition=" + empName;
                         }
                     }
-
                 })
-
             })
         })
 
@@ -95,6 +91,11 @@
                         </ul>
                     </li>
                 </ul><!-- /.nav navbar-nav navbar-right -->
+                <div style="float: right">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">欢迎您:${pageContext.request.session.getAttribute("username")}</a></li>
+                    </ul>
+                </div>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
