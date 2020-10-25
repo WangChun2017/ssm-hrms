@@ -51,7 +51,7 @@ public class EmployeeController {
     public String finaAllList(HttpServletRequest request, Model model, @RequestParam(value = "currentPage", defaultValue = "1", required = false) Integer currentPage, @RequestParam(value = "condition", required = false, defaultValue = "") String condition) {
         List<Employee> lists = employeeService.findAllList();
         HttpSession session = request.getSession();
-        PageBean<Employee> byPage = employeeService.findByPage(currentPage,condition);
+        PageBean<Employee> byPage = employeeService.findByPage(currentPage, condition);
 //        System.out.println(byPage.getList().size());
         System.out.println(byPage.getList().toString());
         System.out.println(condition);
@@ -88,12 +88,9 @@ public class EmployeeController {
 
     }
 
-
     /**
      * 删除用户
      */
-
-
     @RequestMapping("/deleteEmployee")
     @ResponseBody
     public Integer deleteEmployee(@RequestParam("deleteId") String deleteId) {
@@ -134,6 +131,17 @@ public class EmployeeController {
     public Integer employeeSearch(@RequestParam(value = "empName", required = false) String empName, HttpServletRequest request, Model model) {
         System.out.println("执行了employeeSearch");
         System.out.println(empName);
+
+        return 100;
+    }
+
+    @RequestMapping("/logout")
+    @ResponseBody
+    public Integer  logout(HttpServletRequest request) {
+
+        System.out.println("执行了logout");
+        HttpSession session = request.getSession();
+        session.removeAttribute("username");
 
         return 100;
     }

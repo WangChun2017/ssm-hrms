@@ -21,8 +21,8 @@
             crossorigin="anonymous"></script>
     <script>
         $(function () {
+            <!--  模糊查询 -->
             $("#search_sure").click(function () {
-
                 var empName = $("#search").val();
                 $.ajax({
                     url: "${pageContext.request.contextPath}/employee/employeeSearch?empName=" + empName,
@@ -38,7 +38,25 @@
                 })
             })
         })
-
+    </script>
+    <script>
+        $(function () {
+            <!--  登录退出 -->
+            $("#logout").click(function () {
+                $.ajax({
+                    url: "${pageContext.request.contextPath}/employee/logout",
+                    type: "POST",
+                    data: JSON.stringify({}),
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    success: function (data) {
+                        if (data == 100) {
+                            window.location.href = "${pageContext.request.contextPath}/info/jumpLogin";
+                        }
+                    }
+                })
+            })
+        })
     </script>
 </head>
 <body>
@@ -86,8 +104,9 @@
                                                                  aria-hidden="true"></span> 修改信息</a></li>
                             <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 头像更换</a>
                             </li>
-                            <li><a href="#" class="hrms_logout"><span class="glyphicon glyphicon-off"
-                                                                      aria-hidden="true"></span> 账号退出</a></li>
+                            <li><a href="#" class="hrms_logout" id="logout" ><span class="glyphicon glyphicon-off"
+                                                                       aria-hidden="true"></span> 账号退出</a>
+                            </li>
                         </ul>
                     </li>
                 </ul><!-- /.nav navbar-nav navbar-right -->
