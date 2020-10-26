@@ -58,6 +58,8 @@
             })
         })
     </script>
+
+
 </head>
 <body>
 <div class="hrms_brand_nav">
@@ -86,6 +88,7 @@
                     <li><a href="#">请假申请</a></li>
                     <li><a href="#">报销申请</a></li>
                     <li><a href="#">出勤记录</a></li>
+                    <li><a href="${pageContext.request.contextPath}/file/fileToFileMain" id="fileMain">文件</a></li>
                 </ul>
 
                 <form class="navbar-form navbar-left" id="" onsubmit="return false" action="##" method="post">
@@ -104,8 +107,8 @@
                                                                  aria-hidden="true"></span> 修改信息</a></li>
                             <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 头像更换</a>
                             </li>
-                            <li><a href="#" class="hrms_logout" id="logout" ><span class="glyphicon glyphicon-off"
-                                                                       aria-hidden="true"></span> 账号退出</a>
+                            <li><a href="#" class="hrms_logout" id="logout"><span class="glyphicon glyphicon-off"
+                                                                                  aria-hidden="true"></span> 账号退出</a>
                             </li>
                         </ul>
                     </li>
