@@ -47,7 +47,7 @@
 <%--    <a href="#" onclick="downloadFileByForm()">模拟表单提交下载文件</a>--%>
 <%--</div>--%>
 
-
+https://www.cnblogs.com/nuccch/p/7151228.html
 <form method="post" action="##" enctype="multipart/form-data" onsubmit="return false">
     <table>
         <tr>
