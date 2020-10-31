@@ -38,8 +38,6 @@ public class InfoController {
     @ResponseBody
     public Integer loginInfo(@RequestBody CheckCode checkCode, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-
         HttpSession session = request.getSession();
         String loginCode = (String) session.getAttribute("loginCode");
         System.out.println(loginCode);

@@ -3,16 +3,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>登录界面</title>
-    <%--    <script>--%>
-    <%--        window.onload = function () {--%>
-    <%--            var img = document.getElementById("change");--%>
-    <%--            var date = new Date().getTime();--%>
-    <%--            img.src = "${pageContext.request.contextPath}/employee/checkCode?" + date;--%>
-    <%--            img.onclick = new function (){--%>
-    <%--                img.src = "${pageContext.request.contextPath}/employee/checkCode?" + date;--%>
-    <%--            }--%>
-    <%--        }--%>
-    <%--    </script>--%>
     <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
     <script>
         function refreshCode() {

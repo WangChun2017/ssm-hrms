@@ -18,5 +18,16 @@
 <c:forEach items="${list}" var="employee">
     ${employee.empId}----${employee.empName}----${employee.empEmail}----${employee.gender}----${employee.departmentId}
 </c:forEach>
+
+
+<%--<img src="${pageContext.request.contextPath}/fileviewImage?path=${files.fileUrl}">--%>
+
+
+${fileList}
+
+<img src="${pageContext.request.contextPath}/chart/${fileName}" alt="123" width="60px" height="60px">
+<br>
+<a id="download">下载</a>
+${fileUrl}${fileName}
 </body>
 </html>
